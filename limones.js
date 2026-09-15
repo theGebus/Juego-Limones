@@ -4,12 +4,19 @@ let ctx=canvas.getContext("2d");
 const alturaSuelo=25;
 const altura_Personaje=35;
 const ancho_Personaje=20;
+const ancho_Limon=20;
+const alto_Limon=20;
+
 let personajeX=canvas.width/2;
-let personajeY=height; 
+let personajeY=canvas.height;
+let limonX=canvas.width/2;
+let limonY=3;
 
 function llamarFunciones (){
     dibujarSuelo();
     dibujarPersonaje();
+    dibujarLimones ();
+
 }
 
 function dibujarSuelo (){
@@ -20,7 +27,7 @@ function dibujarSuelo (){
 function dibujarPersonaje (){
 
     ctx.fillStyle="red";
-    ctx.fillRect(personajeX,canvas.height-(alturaSuelo+altura_Personaje ),ancho_Personaje,altura_Personaje)
+    ctx.fillRect(personajeX,personajeY-(alturaSuelo+altura_Personaje ),ancho_Personaje,altura_Personaje)
 
 }
 
@@ -36,6 +43,7 @@ function cleanPersonaje (){
     limpiarCanva();
     dibujarPersonaje();
     dibujarSuelo();
+    dibujarLimones();
 
 }
 
@@ -47,5 +55,19 @@ function limpiarCanva (){
 
 function moverDerecha (){
     personajeX=personajeX+10;
+    cleanPersonaje();
+}
+
+//Lluvia de limones
+
+function dibujarLimones (){
+    ctx.fillStyle="green";
+    ctx.fillRect(limonX,limonY,ancho_Limon,alto_Limon)
+}
+
+//Mover limon
+
+function mover_Limon (){
+    limonY=limonY +10;
     cleanPersonaje();
 }
