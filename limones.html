@@ -3,9 +3,10 @@
 <head>
   <title>Caza Estrellas</title>
   <link rel="stylesheet" href="limones.css"/>
+  <script src="utils.js"></script>
   <link rel="icon" hreft="data;,">
 </head>
-<body onload="llamarFunciones()" >
+<body onload="iniciarJuego()" >
   <div class="contenedor">
     <h1>Atrapar Limones</h1>
     <p>Si del cielo te caen limones ..... </p>
@@ -16,9 +17,9 @@
       <p>Puntaje: <span id="txtPuntaje">0</span></p>
     </div>
     <div class="botones">
-      <button onclick="moverIzquierdas();">Izquierda</button>
-      <button onclick="moverDerecha();">Derecha</button>
-      <button onclick="mover_Limon();">Bajar estrella</button>
+      <button onclick="moverPersonajeIzquierda();">Izquierda</button>
+      <button onclick="moverPersonajeDerecha();">Derecha</button>
+      <button onclick="bajarLimon();">Bajar estrella</button>
       <button>Reiniciar</button>
     </div>
   </div>
