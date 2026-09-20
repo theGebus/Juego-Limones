@@ -119,9 +119,12 @@ function comprobarColisionConLimon() {
 }
 
 function detectarPiso(){
-    if(limonY+alto_Limon>=canvas.height-alto_Limon){
+    if(limonY+alto_Limon>=canvas.height-alturaSuelo){
         vidas=vidas-1;
-        mostrarEnSpan("txtVidas",vidas)
+        mostrarEnSpan("txtVidas",vidas);
+        if(vidas==0){
+            alert("GAME OVER")
+        }
         colocarLimonArriba();
     }
 }
