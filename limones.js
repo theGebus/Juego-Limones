@@ -4,8 +4,8 @@ const ctx = canvas.getContext("2d");
 
 // Tamaños
 const alturaSuelo = 25;
-const altura_Personaje = 35;
-const ancho_Personaje = 20;
+const altura_Personaje = 70;
+const ancho_Personaje = 50;
 const ancho_Limon = 20;
 const alto_Limon = 20;
 
@@ -22,8 +22,13 @@ let limonY = 0;
 let puntaje = 0;
 let vidas = 3;
 
+//Velocidad del Limon
+
+let velocidadLimon=400;
+
 // Iniciar el juego
 function iniciarJuego() {
+    setInterval(bajarLimon,velocidadLimon);//Primer Parametro: funcion segundoParametro: tiempo en milisegundos
     colocarLimonArriba();
     actualizarPantalla();
 }
@@ -71,7 +76,7 @@ function dibujarLimon() {
 
 // Mover el personaje hacia la izquierda
 function moverPersonajeIzquierda() {
-    personajeX = Math.max(0, personajeX - 10);
+    personajeX = Math.max(0, personajeX - 50);
 
     comprobarColisionConLimon();
     actualizarPantalla();
@@ -81,7 +86,7 @@ function moverPersonajeIzquierda() {
 function moverPersonajeDerecha() {
     personajeX = Math.min(
         canvas.width - ancho_Personaje,
-        personajeX + 10
+        personajeX + 50
     );
 
     comprobarColisionConLimon();
