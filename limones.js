@@ -17,6 +17,11 @@ let personajeY = canvas.height;
 let limonX = canvas.width / 2;
 let limonY = 0;
 
+//Detectar Puntaje y Vidas
+
+let puntaje = 0;
+let vidas = 3;
+
 // Iniciar el juego
 function iniciarJuego() {
     colocarLimonArriba();
@@ -86,13 +91,8 @@ function moverPersonajeDerecha() {
 // Hacer que el limón baje
 function bajarLimon() {
     limonY += 30;
-
     comprobarColisionConLimon();
-
-    if (limonY + alto_Limon >= canvas.height - alturaSuelo) {
-        colocarLimonArriba();
-    }
-
+    detectarPiso()
     actualizarPantalla();
 }
 
@@ -108,6 +108,16 @@ function comprobarColisionConLimon() {
         limonY < personajeArriba + altura_Personaje
     ) {
         colocarLimonArriba();
+        puntaje=puntaje+1;
+        mostrarEnSpan("txtPuntaje",puntaje)
+    }
+}
+
+function detectarPiso(){
+    if(limonY+alto_Limon>=canvas.height-alto_Limon){
+        vidas=vidas-1;
+        mostrarEnSpan("txtVidas",vidas)
+        colocarLimonArriba();
     }
 }
 
@@ -118,10 +128,6 @@ function colocarLimonArriba() {
     limonY = 0;
 }
 
-// Mostrar un número aleatorio en la consola
-function probarNumeroAleatorio() {
-    console.log(generarAleatorio(10, 100));
-}
 
 // Ejecutar al cargar el archivo
 iniciarJuego();
