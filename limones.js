@@ -24,11 +24,12 @@ let vidas = 3;
 
 //Velocidad del Limon
 
-let velocidadLimon=400;
+let velocidadLimon=200;
+let LimpiarVelocidad;
 
 // Iniciar el juego
 function iniciarJuego() {
-    setInterval(bajarLimon,velocidadLimon);//Primer Parametro: funcion segundoParametro: tiempo en milisegundos
+    LimpiarVelocidad=setInterval(bajarLimon,velocidadLimon);//Primer Parametro: funcion segundoParametro: tiempo en milisegundos
     colocarLimonArriba();
     actualizarPantalla();
 }
@@ -76,7 +77,7 @@ function dibujarLimon() {
 
 // Mover el personaje hacia la izquierda
 function moverPersonajeIzquierda() {
-    personajeX = Math.max(0, personajeX - 50);
+    personajeX = Math.max(0, personajeX - 90);
 
     comprobarColisionConLimon();
     actualizarPantalla();
@@ -86,7 +87,7 @@ function moverPersonajeIzquierda() {
 function moverPersonajeDerecha() {
     personajeX = Math.min(
         canvas.width - ancho_Personaje,
-        personajeX + 50
+        personajeX + 90
     );
 
     comprobarColisionConLimon();
@@ -115,6 +116,20 @@ function comprobarColisionConLimon() {
         colocarLimonArriba();
         puntaje=puntaje+1;
         mostrarEnSpan("txtPuntaje",puntaje)
+
+        // cambio la velocidad del limon
+
+        if(puntaje===3){
+        clearInterval(LimpiarVelocidad);
+        velocidadLimon=150;
+        LimpiarVelocidad=setInterval(bajarLimon,velocidadLimon)
+    } else if(puntaje === 6){
+        clearInterval(LimpiarVelocidad);
+        velocidadLimon=100;
+        LimpiarVelocidad=setInterval(bajarLimon,velocidadLimon)
+    }else if(puntaje===10){
+        alert("Vamos por ese tequila y a olvidar a esas bb :(")
+    }
     }
 }
 
@@ -136,6 +151,3 @@ function colocarLimonArriba() {
     limonY = 0;
 }
 
-
-// Ejecutar al cargar el archivo
-iniciarJuego();
