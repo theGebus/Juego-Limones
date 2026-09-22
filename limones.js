@@ -153,5 +153,27 @@ function colocarLimonArriba() {
     limonY = 0;
 }
 
+//Reiniciar el Juego
 
+function reiniciar(){
+
+    //Velocidad
+
+    clearInterval(LimpiarVelocidad);
+    velocidadLimon = 200;
+
+    //Vidas
+
+    vidas=3;
+    mostrarEnSpan("txtVidas",vidas);
+
+    // puntaje
+
+    puntaje=0;
+    mostrarEnSpan("txtPuntaje",puntaje);
+
+    //Iniciar juego 
+
+    iniciarJuego();
+}
 
