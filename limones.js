@@ -128,6 +128,7 @@ function comprobarColisionConLimon() {
         velocidadLimon=100;
         LimpiarVelocidad=setInterval(bajarLimon,velocidadLimon)
     }else if(puntaje===10){
+        clearInterval(LimpiarVelocidad);
         alert("Vamos por ese tequila y a olvidar a esas bb :(")
     }
     }
@@ -138,6 +139,7 @@ function detectarPiso(){
         vidas=vidas-1;
         mostrarEnSpan("txtVidas",vidas);
         if(vidas==0){
+            clearInterval(LimpiarVelocidad);
             alert("GAME OVER")
         }
         colocarLimonArriba();
@@ -150,4 +152,6 @@ function colocarLimonArriba() {
     limonX = generarAleatorio(0, canvas.width - ancho_Limon);
     limonY = 0;
 }
+
+
 
